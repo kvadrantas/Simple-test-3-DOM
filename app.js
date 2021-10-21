@@ -82,7 +82,6 @@
     if(contactsDom.style.color !== 'orange') {
         contactsDom.style.color = 'orange'
     }
-    console.log('BBBB', contactsDom.style.color);
     });
     // Padaryti taip, kad paspaudus ant padidinti, esančio tage su id contacts, tagui su id contacts būtų pridėta css savybė fontSize = 20px;
     const cntuDom = document.querySelector('#contacts > u');
@@ -116,11 +115,47 @@
         e.querySelector('.like-button').addEventListener('click', () => {
             e.classList.add('like');
         })
-    })
+    });
 
 // Dinaminis elementų kūrimas (su createElement)
     // Dinamiškai su JS pridėti naują kainą “Senjorai tik: 1.99 eur”;
-    
+    const pricesDom = document.querySelector('.prices');
+    const newPriceh2 = document.createElement('h2');
+    const newPricetxt = document.createTextNode('Senjorai tik: 1.99 eur');
+    newPriceh2.appendChild(newPricetxt);
+    pricesDom.appendChild(newPriceh2);
     // Dinamiškai su JS Pridėti naują kainą “Senjorų grupė iki 10: tik 5.99 eur” Padaryti, kad pridėtas elementas turėtų klasę new ir ant jo paklikinus jis pasidarytų žalias;
+    const newPriceh2B = document.createElement('h2');
+    const newPricetxtB = document.createTextNode('Senjorų grupė iki 10: tik 5.99 eur');
+    newPriceh2B.appendChild(newPricetxtB);
+    pricesDom.appendChild(newPriceh2B);
+    newPriceh2B.classList.add('new');
+    newPriceh2B.addEventListener('click', e => e.target.style.color = 'green');
     // Dinamiškai su JS kiekvienoje gyvūnų kategorijoje po “PATINKA” pridėkite dar vieną li elementą “NEPATINKA”, kurį paspaudus atitinkamoje sekcijoje būtų nuimta klasė like
+    const allUlDom = document.querySelectorAll('.animals > ul');
+    allUlDom.forEach(e => {
+        const likeBtnDom = e.querySelector('.like-button');
+        const li = document.createElement('li');
+        const txt = document.createTextNode('NEPATINKA');
+        li.appendChild(txt);
+        li.addEventListener('click', () =>  e.classList.remove('like'));
+        likeBtnDom.after(li);
+    });
     // Dinamiškai su JS sukurkite naują mygtukų grupę HEADER 3 naudojant analogišką html tagų struktūrą kaip ir HEADER 1 ir HEADER 2. Pirmas mygtukas vadintųsi, “Pabraukti H1 tagą”, o antras “Nepabraukti H1 tagą”. Mygtukai turi daryti tai kas ant jų parašyta
+const fieldset = document.createElement('fieldset');
+const legend = document.createElement('legend');
+const btn1 = document.createElement('button');
+const btn2 = document.createElement('button');
+const btnText1 = document.createTextNode('Pabraukti H1 tagą');
+const btnText2 = document.createTextNode('Nepabraukti H1 tagą');
+const legendText = document.createTextNode('HEADER 3');
+legend.appendChild(legendText);
+fieldset.appendChild(btn1);
+fieldset.appendChild(btn2);
+btn1.appendChild(btnText1);
+btn2.appendChild(btnText2);
+fieldset.appendChild(legend);
+document.getElementById('contacts').before(fieldset);
+
+btn1.addEventListener('click', () => document.querySelector('h1').style.textDecoration = 'underline');
+btn2.addEventListener('click', () => document.querySelector('h1').style.textDecoration = 'none');
