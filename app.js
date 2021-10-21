@@ -67,15 +67,45 @@
         document.querySelector('h1').style.fontSize = '10px';
     });
     // Padaryti, kad paspaudus ant i tago jis pakeistų fonto svorį į bold;
+    const iDom = document.querySelector('i');
+    iDom.addEventListener('click', () => iDom.style.fontWeight = 'bold')
     // Padaryti, kad paspaudus ant tago su klase prices, backgroundas pasikeistų į pilką, o paspaudus dar kartą vėl grįžtu į baltą spalvą;
+    const priceDom = document.querySelector('.prices');
+    let color = true;
+    priceDom.addEventListener('click', () => {
+        color = !color;
+        priceDom.style.background = color ? 'red' : 'white'}) 
+    
     // Padaryti, kad paspaudus ant tago su id contacts, tam tagui būtų pridėta css savybė color = orange;
+    const contactsDom = document.getElementById('contacts');
+    contactsDom.addEventListener('click', () => {
+    if(contactsDom.style.color !== 'orange') {
+        contactsDom.style.color = 'orange'
+    }
+    console.log('BBBB', contactsDom.style.color);
+    });
     // Padaryti taip, kad paspaudus ant padidinti, esančio tage su id contacts, tagui su id contacts būtų pridėta css savybė fontSize = 20px;
+    const cntuDom = document.querySelector('#contacts > u');
+    cntuDom.addEventListener('click', () => {contactsDom.style.fontSize = '20px'});
     // Padaryti taip, kad paspaudus ant X, esančio tage su id contacts, pridėtos tage su id contacts savybės būtų panaikintos https://stackoverflow.com/questions/18691655/remove-style-on-element
+    const xDom = document.querySelector('#contacts > b');
+        xDom.addEventListener('click', () => {
+            contactsDom.style.color = null;
+            contactsDom.style.fontSize = null;
+        });
     // Padaryti tai ką liepia mygtukai Header2 sekcijoje;
+    const h1Dom = document.getElementById('h1-color-back');
+    h1Dom.addEventListener('click', () => {
+        document.querySelector('h1').style.color = null;
+    });
 
 // Elementų grupių events
     // Padaryti, kad dukartus paspaudus ant naujų gyvūnų jie nusispalvintu raudonai https://developer.mozilla.org/en-US/docs/Web/API/Element/dblclick_event
+    const nauGyvDom = document.querySelectorAll('.new');
+    nauGyvDom.forEach(e => e.addEventListener('dblclick', () => e.style.color = 'red'))
+    
     // Padaryti, kad paspaudus ant gyvūno jis būtų atvaizduojamas 130% didesniu fonto dydžiu. “PATINKA” tas neturi galioti.
+    
     // Padaryti, kad paspaudus ant “PATINKA”, atitinkamai sekcijai būtų priskirta klasė like;
 
 // Dinaminis elementų kūrimas (su createElement)
