@@ -106,10 +106,21 @@
     
     // Padaryti, kad paspaudus ant gyvūno jis būtų atvaizduojamas 130% didesniu fonto dydžiu. “PATINKA” tas neturi galioti.
     
+    const gyvunaiDom = document.querySelectorAll('.animals > ul > li:not(.like-button)');
+    gyvunaiDom.forEach(e => e.addEventListener('click', u => {
+        u.target.style.fontSize = '130%'
+    }));
+
     // Padaryti, kad paspaudus ant “PATINKA”, atitinkamai sekcijai būtų priskirta klasė like;
+    document.querySelectorAll('.animals > ul').forEach(e => {
+        e.querySelector('.like-button').addEventListener('click', () => {
+            e.classList.add('like');
+        })
+    })
 
 // Dinaminis elementų kūrimas (su createElement)
     // Dinamiškai su JS pridėti naują kainą “Senjorai tik: 1.99 eur”;
+    
     // Dinamiškai su JS Pridėti naują kainą “Senjorų grupė iki 10: tik 5.99 eur” Padaryti, kad pridėtas elementas turėtų klasę new ir ant jo paklikinus jis pasidarytų žalias;
     // Dinamiškai su JS kiekvienoje gyvūnų kategorijoje po “PATINKA” pridėkite dar vieną li elementą “NEPATINKA”, kurį paspaudus atitinkamoje sekcijoje būtų nuimta klasė like
     // Dinamiškai su JS sukurkite naują mygtukų grupę HEADER 3 naudojant analogišką html tagų struktūrą kaip ir HEADER 1 ir HEADER 2. Pirmas mygtukas vadintųsi, “Pabraukti H1 tagą”, o antras “Nepabraukti H1 tagą”. Mygtukai turi daryti tai kas ant jų parašyta
